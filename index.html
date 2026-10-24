@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Green Energy App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #0f2027, #2c5364);
+  color: white;
+}
+
+header {
+  text-align: center;
+  padding: 40px;
+}
+
+header h1 {
+  font-size: 40px;
+  color: #00ffcc;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background: rgba(0,0,0,0.6);
+  padding: 12px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+section {
+  padding: 40px;
+  text-align: center;
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  margin: 15px;
+  border-radius: 15px;
+  transition: 0.3s;
+  display: inline-block;
+  min-width: 200px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background: rgba(0,255,204,0.2);
+}
+
+input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 220px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background: #00ffcc;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.member {
+  background: #00ffcc;
+  color: black;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 0 15px #00ffcc;
+  transition: 0.3s;
+}
+
+.member:hover {
+  transform: scale(1.1);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: black;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🌿 Renewable Energy System</h1>
+  <p>Powering the Future Sustainably</p>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#types">Types</a>
+  <a href="#benefits">Benefits</a>
+  <a href="#solar">Calculator</a>
+  <a href="#team">Team</a>
+</nav>
+
+<section id="about">
+  <h2>🌍 About Renewable Energy</h2>
+  <p>Renewable energy comes from natural sources like sunlight, wind, and water. It is clean, sustainable, and eco-friendly.</p>
+</section>
+
+<section id="types">
+  <h2>⚡ Types of Energy</h2>
+  <div class="card">☀ Solar Energy</div>
+  <div class="card">🌬 Wind Energy</div>
+  <div class="card">💧 Hydropower</div>
+  <div class="card">🌱 Biomass</div>
+</section>
+
+<section id="benefits">
+  <h2>✅ Advantages</h2>
+  <div class="card">Eco-Friendly</div>
+  <div class="card">Unlimited Source</div>
+  <div class="card">Reduces Pollution</div>
+</section>
+
+<section id="solar">
+  <h2>🌞 Solar Energy Calculator</h2>
+  <p>Enter daily solar energy generation (kWh):</p>
+  <input type="number" id="units" placeholder="Enter units">
+  <br><br>
+  <button onclick="calculateEnergy()">Calculate</button>
+  <h3 id="result"></h3>
+</section>
+
+<section>
+  <h2>💡 Energy Saving Tip</h2>
+  <p id="tip">Click below to get a tip</p>
+  <button onclick="showTip()">Get Tip</button>
+</section>
+
+<section id="team">
+  <h2>👩‍💻 Our Team</h2>
+  <div class="team">
+    <div class="member">Nusrat Anjum</div>
+    <div class="member">Princy</div>
+    <div class="member">Pinky</div>
+    <div class="member">Prabhat</div>
+    <div class="member">Vishal</div>
+  </div>
+</section>
+
+<footer>
+  <p>🌿 Save Energy Today, Secure Tomorrow</p>
+</footer>
+
+<script>
+function calculateEnergy() {
+  let units = document.getElementById("units").value;
+
+  if (units === "" || units <= 0) {
+    document.getElementById("result").innerText = "Please enter valid units!";
+    return;
+  }
+
+  let monthly = units * 30;
+  let yearly = units * 365;
+  let saving = yearly * 6;
+
+  document.getElementById("result").innerHTML =
+    "⚡ Monthly Energy: " + monthly + " kWh <br>" +
+    "📅 Yearly Energy: " + yearly + " kWh <br>" +
+    "💰 Estimated Saving: ₹" + saving;
+}
+
+function showTip() {
+  const tips = [
+    "Turn off lights when not in use",
+    "Use solar panels for clean energy",
+    "Save water and electricity",
+    "Use energy efficient appliances"
+  ];
+  const random = tips[Math.floor(Math.random() * tips.length)];
+  document.getElementById("tip").innerText = random;
+}
+</script>
+
+</body>
+</html>
